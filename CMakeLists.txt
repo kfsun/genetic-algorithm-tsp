@@ -11,19 +11,19 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(cheeseburger)
 
-#add_library(chucknorris
-#  include/ChuckNorris.hpp
-#  src/ChuckNorris.cpp
-#)
+add_library(cheeseburgerlib
+  include/random_generator.hpp
+  src/random_generator.cpp
+)
 
-#target_include_directories(
-#  chucknorris
-#  PUBLIC
-#    "include"
-#)
+target_include_directories(
+  cheeseburgerlib
+  PUBLIC
+    "include"
+)
 
 add_executable(cpp_demo
   src/main.cpp
 )
 
-#target_link_libraries(cpp_demo chucknorris)
+target_link_libraries(cpp_demo cheeseburgerlib)
