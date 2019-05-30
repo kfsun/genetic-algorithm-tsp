@@ -19,6 +19,8 @@ add_library(cheeseburgerlib
   src/city.cpp
   include/city_collection.hpp
   src/city_collection.cpp
+  include/candidate.hpp
+  src/candidate.cpp
 )
 
 target_include_directories(
