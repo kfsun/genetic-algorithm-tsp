@@ -1,15 +1,11 @@
-#include <iostream>
-#include "random_generator.hpp"
 
-using namespace std;
+#include <iostream>
+#include "city_collection.hpp"
+#include <memory>
 
 int main() {
-  auto p = RandomGenerator::getInstance();
+  auto pcc = std::make_shared<CityCollection>(100);
 
-  for (int i {}; i < 1000; i++) {
-  cout << "R = " << p->getDouble() << endl;
-  }
-
-  cout << "hello!!!" << endl;
+  pcc->Print();
   return 0;
 }

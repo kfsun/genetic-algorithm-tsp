@@ -17,6 +17,8 @@ add_library(cheeseburgerlib
   src/random_generator.cpp
   include/city.hpp
   src/city.cpp
+  include/city_collection.hpp
+  src/city_collection.cpp
 )
 
 target_include_directories(
