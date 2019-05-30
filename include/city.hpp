@@ -12,6 +12,16 @@ class City {
   public:
     City() = default;
     City(int init_x, int init_y);
+
+    inline int getX() {
+      return x;
+    }
+
+    inline int getY() {
+      return y;
+    }
+
+    double DistanceFrom(City& city);
 };
 
 #endif // RANDOM_GENERATOR_H_
