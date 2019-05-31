@@ -2,11 +2,14 @@
 #define CANDIDATE_H_
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
 class Candidate {
   private:
+    std::vector<int> chromosome_;
+    double fitness_ {-1.0};
     int x {}, y {};
 
   public:
