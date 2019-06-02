@@ -15,7 +15,9 @@ class Candidate {
     Candidate();
     Candidate(std::vector<int> chromosome);
 
-
+    void get_a_copy_of_chromosome(std::vector<int>& chromosome);
+    size_t get_chromosome_length();
+    void Print();
 };
 
 #endif // CANDIDATE_H_
