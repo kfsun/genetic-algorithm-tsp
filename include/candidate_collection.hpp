@@ -1,21 +1,18 @@
-#ifndef CANDIDATE_H_
-#define CANDIDATE_H_
+#ifndef CANDIDATE_COLLECTION_H_
+#define CANDIDATE_COLLECTION_H_
 
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-class Candidate {
+class CandidateCollection {
   private:
-    std::vector<int> chromosome_;
-    double fitness_ {-1.0};
 
   public:
-    Candidate();
-    Candidate(std::vector<int> chromosome);
+    CandidateCollection();
 
 
 };
 
-#endif // CANDIDATE_H_
+#endif // CANDIDATE_COLLECTION_H_
