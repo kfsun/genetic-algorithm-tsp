@@ -12,11 +12,18 @@ class Candidate {
     double fitness_ {-1.0};
 
   public:
-    Candidate();
+    Candidate(size_t chromosome_size);
     Candidate(std::vector<int> chromosome);
 
-    void get_a_copy_of_chromosome(std::vector<int>& chromosome);
+    void set_fitness(double f);
+    double get_fitness();
+
     size_t get_chromosome_length();
+    void copy_chromosome(std::vector<int>& chromosome);
+    void set_gene(size_t offset, int gene);
+    int get_gene(size_t offset);
+    bool contains(int gene);
+
     void Print();
 };
 

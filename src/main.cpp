@@ -1,11 +1,16 @@
 
 #include <iostream>
-#include "city_collection.hpp"
 #include <memory>
+#include "city_collection.hpp"
+#include "candidate.hpp"
 
 int main() {
-  auto pcc = std::make_shared<CityCollection>(100);
+  int total_city = 100;
+  auto pcc = std::make_shared<CityCollection>(total_city);
 
-  pcc->Print();
+  //pcc->Print();
+  Candidate n {pcc->get_size()};
+  n.Print();
+
   return 0;
 }
