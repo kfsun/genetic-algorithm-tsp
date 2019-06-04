@@ -26,6 +26,8 @@ add_library(cheeseburgerlib
   src/candidate.cpp
   include/candidate_collection.hpp
   src/candidate_collection.cpp
+  include/genetic_algorithm.hpp
+  src/genetic_algorithm.cpp
 )
 
 target_include_directories(
