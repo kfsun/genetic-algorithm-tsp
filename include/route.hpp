@@ -1,22 +1,20 @@
-#ifndef CANDIDATE_H_
-#define CANDIDATE_H_
+#ifndef ROUTE_H_
+#define ROUTE_H_
 
-#include <iostream>
 #include <vector>
 
-using namespace std;
-
-class Candidate {
+class Route {
   protected:
-    double fitness_ {-1.0};
 
   private:
+    std::vector<int> city_indice_;
 
   public:
-    Candidate() = default;
+    //Route() = default;
+    Route(size_t number_of_city);
+    Route(std::vector<int> city_indice);
 
-    void set_fitness(double f);
-    double get_fitness();
+    double distance();
 };
 
-#endif // CANDIDATE_H_
+#endif // ROUTE_H_
