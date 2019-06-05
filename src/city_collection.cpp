@@ -16,8 +16,13 @@ CityCollection::CityCollection(size_t number_of_city) {
   }
 }
 
+std::shared_ptr<City> CityCollection::get_city(size_t offset) {
+  return cities_[offset];
+}
+
 void CityCollection::Print() {
   for (auto c : cities_) {
     std::cout << "c { " << c->getX() << " , " << c->getY() << " }" << endl;
   }
 }
+

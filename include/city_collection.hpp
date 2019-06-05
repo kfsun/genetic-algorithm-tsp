@@ -14,6 +14,7 @@ class CityCollection {
   public:
     CityCollection(size_t number_of_city);
     inline size_t get_size() { return cities_.size(); }
+    std::shared_ptr<City> get_city(size_t offset);
 
     void Print();
 

@@ -21,7 +21,7 @@ class City {
       return y;
     }
 
-    double DistanceFrom(City& city);
+    double distance_from(City& city);
 };
 
 #endif // RANDOM_GENERATOR_H_

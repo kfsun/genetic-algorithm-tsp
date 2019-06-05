@@ -8,7 +8,7 @@ City::City(int init_x, int init_y) {
   y = init_y;
 }
 
-double City::DistanceFrom(City& city) {
+double City::distance_from(City& city) {
   double deltaXSq = pow((city.getX() - getX()), 2);
   double deltaYSq = pow((city.getY() - getY()), 2);
 

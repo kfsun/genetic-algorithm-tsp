@@ -1,12 +1,15 @@
+#include <iostream>
 #include "route.hpp"
 
-Route::Route(size_t number_of_city) {
-  for (size_t i {} ; i < number_of_city; i++) {
+Route::Route(shared_ptr<CityCollection> pcc) {
+  pcc_ = pcc;
+  for (size_t i {} ; i < pcc_->get_size(); i++) {
     city_indice_.push_back(i);
   }
 }
 
-Route::Route(std::vector<int> city_indice) {
+Route::Route(shared_ptr<CityCollection> pcc, std::vector<int> city_indice) {
+  pcc_ = pcc;
   city_indice_ = city_indice;
 }
 
@@ -15,12 +18,22 @@ double Route::distance() {
     return 0;
   }
 
-      double totalDistance = 0;
-//    for (int cityIndex = 0; cityIndex + 1 < this.route.length; cityIndex++) {
-//      totalDistance += this.route[cityIndex].distanceFrom(this.route[cityIndex + 1]);
-//    }
- //   totalDistance += this.route[this.route.length - 1].distanceFrom(this.route[0]);
- //   this.distance = totalDistance;
-    return totalDistance;
+  double total_distance = 0;
+  for (size_t i {}; i + 1 < city_indice_.size(); i++) {
+    auto c1 = pcc_->get_city(city_indice_[i]);
+    auto c2 = pcc_->get_city(city_indice_[i+1]);
+    total_distance += c1->distance_from(*c2);
+  }
 
+  auto c1 = pcc_->get_city(city_indice_.size() - 1);
+  auto c2 = pcc_->get_city(city_indice_[0]);
+  total_distance += c1->distance_from(*c2);
+
+  return total_distance;
+}
+
+void Route::print() {
+  for (size_t i {}; i < city_indice_.size(); i++) {
+    std::cout << city_indice_[i] << " ; " << std::endl;
+  }
 }
