@@ -34,6 +34,7 @@ double Route::distance() {
 
 void Route::print() {
   for (size_t i {}; i < city_indice_.size(); i++) {
-    std::cout << city_indice_[i] << " ; " << std::endl;
+    std::cout << city_indice_[i] << " ; ";
   }
+  std::cout << std::endl;
 }

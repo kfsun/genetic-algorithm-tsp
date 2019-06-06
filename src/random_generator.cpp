@@ -33,7 +33,8 @@ RandomGenerator::RandomGenerator() {
 
   pIntGenerator_ = std::make_shared<
     boost::variate_generator<boost::mt19937, boost::uniform_int<>>
-    >( boost::mt19937(time(0)), boost::uniform_int<>(0, 999999) )
+    >( boost::mt19937(time(0)), boost::uniform_int<>(0, 99) )
+    //>( boost::mt19937(time(0)), boost::uniform_int<>(0, 999999) )
   ;
 }
 
