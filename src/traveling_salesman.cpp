@@ -2,17 +2,17 @@
 #include <iostream>
 #include <algorithm>
 
-TravelingSalesman::TravelingSalesman(Route& r) : my_route_{r} {
+TravelingSalesman::TravelingSalesman(std::shared_ptr<CityCollection> pcc) : my_route_{std::make_unique<Route>(pcc)} {
 }
 
 void TravelingSalesman::calculate_fitness() {
-  set_fitness(1 / my_route_.distance());
+  set_fitness(1 / my_route_->distance());
 }
 
 void TravelingSalesman::print() {
   std::cout << "My route: ";
-  my_route_.print();
-  std::cout << "  distance: " << my_route_.distance() << std::endl;
+  my_route_->print();
+  std::cout << "  distance: " << my_route_->distance() << std::endl;
   std::cout << "  fitness: " << this->fitness_ << std::endl;
 }
 

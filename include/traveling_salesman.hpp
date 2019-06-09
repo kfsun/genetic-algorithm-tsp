@@ -3,18 +3,17 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
+#include "city_collection.hpp"
 #include "candidate.hpp"
 #include "route.hpp"
 
 class TravelingSalesman : public Candidate {
   private:
-    Route& my_route_; 
-//    std::vector<size_t> city_indice_;
+    std::unique_ptr<Route> my_route_; 
 
   public:
-//    explicit TravelingSalesman(size_t number_of_city);
-//    explicit TravelingSalesman(std::vector<size_t>& indice);
-    TravelingSalesman(Route& r);
+    TravelingSalesman(std::shared_ptr<CityCollection> pcc);
 
     void calculate_fitness() override;
     void print();

@@ -28,10 +28,10 @@ add_library(cheeseburgerlib
   src/traveling_salesman.cpp
   include/candidate.hpp
   src/candidate.cpp
+  include/genetic_algorithm.hpp
+  src/genetic_algorithm.cpp
   #include/candidate_collection.hpp
   #src/candidate_collection.cpp
-  #include/genetic_algorithm.hpp
-  #src/genetic_algorithm.cpp
 )
 
 target_include_directories(
