@@ -24,8 +24,10 @@ add_library(cheeseburgerlib
   src/city_collection.cpp
   include/route.hpp
   src/route.cpp
-  #include/candidate.hpp
-  #src/candidate.cpp
+  include/traveling_salesman.hpp
+  src/traveling_salesman.cpp
+  include/candidate.hpp
+  src/candidate.cpp
   #include/candidate_collection.hpp
   #src/candidate_collection.cpp
   #include/genetic_algorithm.hpp

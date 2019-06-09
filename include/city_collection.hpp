@@ -8,15 +8,14 @@
 
 class CityCollection {
   private:
-    //size_t  number_of_city_ {};
     std::vector<std::shared_ptr<City>> cities_;
 
   public:
-    CityCollection(size_t number_of_city);
+    explicit CityCollection(size_t number_of_city);
     inline size_t get_size() { return cities_.size(); }
     std::shared_ptr<City> get_city(size_t offset);
 
-    void Print();
+    void print();
 
 };
 

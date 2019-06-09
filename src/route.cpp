@@ -1,14 +1,14 @@
 #include <iostream>
 #include "route.hpp"
 
-Route::Route(shared_ptr<CityCollection> pcc) {
+Route::Route(std::shared_ptr<CityCollection> pcc) {
   pcc_ = pcc;
   for (size_t i {} ; i < pcc_->get_size(); i++) {
     city_indice_.push_back(i);
   }
 }
 
-Route::Route(shared_ptr<CityCollection> pcc, std::vector<int> city_indice) {
+Route::Route(std::shared_ptr<CityCollection> pcc, std::vector<size_t> city_indice) {
   pcc_ = pcc;
   city_indice_ = city_indice;
 }

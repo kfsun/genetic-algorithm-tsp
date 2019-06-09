@@ -2,24 +2,21 @@
 #include <iostream>
 #include <algorithm>
 
-Candidate::Candidate(std::vector<int> chromosome) {
-  chromosome_ = chromosome;
+TravelingSalesman::TravelingSalesman(Route& r) : my_route_{r} {
 }
 
-Candidate::Candidate(size_t chromosome_size) {
-  for (size_t i {} ; i < chromosome_size; i++) {
-    chromosome_.push_back(i);
-  }
+void TravelingSalesman::calculate_fitness() {
+  set_fitness(1 / my_route_.distance());
 }
 
-void Candidate::set_fitness(double f) {
-  fitness_ = f;
+void TravelingSalesman::print() {
+  std::cout << "My route: ";
+  my_route_.print();
+  std::cout << "  distance: " << my_route_.distance() << std::endl;
+  std::cout << "  fitness: " << this->fitness_ << std::endl;
 }
 
-double Candidate::get_fitness() {
-  return fitness_;
-}
-
+/*
 size_t Candidate::get_chromosome_length() {
   return chromosome_.size();
 }
@@ -52,3 +49,4 @@ void Candidate::Print() {
   }
   std::cout << std::endl;
 }
+*/

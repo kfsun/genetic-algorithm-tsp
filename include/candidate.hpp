@@ -12,7 +12,9 @@ class Candidate {
 
   public:
     Candidate() = default;
+    virtual ~Candidate() = default;
 
+    virtual void calculate_fitness() = 0;
     void set_fitness(double f);
     double get_fitness();
 };

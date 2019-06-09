@@ -4,24 +4,27 @@
 #include <iostream>
 #include <vector>
 #include "candidate.hpp"
-
-using namespace std;
+#include "route.hpp"
 
 class TravelingSalesman : public Candidate {
   private:
-    std::vector<int> chromosome_;
+    Route& my_route_; 
+//    std::vector<size_t> city_indice_;
 
   public:
-    TravelingSalesman(size_t chromosome_size);
-    TravelingSalesman(std::vector<int> chromosome);
+//    explicit TravelingSalesman(size_t number_of_city);
+//    explicit TravelingSalesman(std::vector<size_t>& indice);
+    TravelingSalesman(Route& r);
 
-    size_t get_chromosome_length();
-    void copy_chromosome(std::vector<int>& chromosome);
-    void set_gene(size_t offset, int gene);
-    int get_gene(size_t offset);
-    bool contains(int gene);
+    void calculate_fitness() override;
+    void print();
+//    size_t get_chromosome_length();
+//    void copy_chromosome(std::vector<int>& chromosome);
+//    void set_gene(size_t offset, int gene);
+//    int get_gene(size_t offset);
+//    bool contains(int gene);
 
-    void Print();
+//    void Print();
 };
 
 #endif // TRAVELING_SALESMAN_H_

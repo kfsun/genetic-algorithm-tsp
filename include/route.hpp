@@ -9,13 +9,13 @@ class Route {
   protected:
 
   private:
-    shared_ptr<CityCollection> pcc_;
-    std::vector<int> city_indice_;
+    std::shared_ptr<CityCollection> pcc_;
+    std::vector<size_t> city_indice_;
 
   public:
     //Route() = default;
-    Route(shared_ptr<CityCollection> pcc);
-    Route(shared_ptr<CityCollection> pcc, std::vector<int> city_indice);
+    Route(std::shared_ptr<CityCollection> pcc);
+    Route(std::shared_ptr<CityCollection> pcc, std::vector<size_t> indice);
 
     double distance();
     void print();
