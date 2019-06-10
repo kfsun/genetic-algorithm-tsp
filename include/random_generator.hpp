@@ -26,7 +26,9 @@ class RandomGenerator {
   public:
     static RandomGenerator* getInstance();
     double getDouble();
-    double getInt();
+    double getMaxDouble();
+    int getInt();
+    int getMaxInt();
 };
 
 #endif // RANDOM_GENERATOR_H_

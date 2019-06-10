@@ -38,10 +38,18 @@ RandomGenerator::RandomGenerator() {
   ;
 }
 
-double RandomGenerator::getInt() {
+int RandomGenerator::getInt() {
   return (*pIntGenerator_)();
+}
+
+int RandomGenerator::getMaxInt() {
+  return pIntGenerator_->max();
 }
 
 double RandomGenerator::getDouble() {
   return (*pGenerator_)();
+}
+
+double RandomGenerator::getMaxDouble() {
+  return pGenerator_->max();
 }

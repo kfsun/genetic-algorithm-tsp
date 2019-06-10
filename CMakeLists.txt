@@ -30,6 +30,8 @@ add_library(cheeseburgerlib
   src/candidate.cpp
   include/genetic_algorithm.hpp
   src/genetic_algorithm.cpp
+	include/tournament.hpp
+	src/tournament.cpp
   #include/candidate_collection.hpp
   #src/candidate_collection.cpp
 )
