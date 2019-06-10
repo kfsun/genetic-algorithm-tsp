@@ -17,4 +17,5 @@ void GeneticAlgo::gen_tournament() {
   }
 
   ptournament_->new_turn(candidates_);
+  ptournament_->print();
 }

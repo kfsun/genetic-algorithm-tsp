@@ -10,9 +10,8 @@ void Tournament::new_turn(const std::vector<std::shared_ptr<Candidate>>& candida
   auto gen = RandomGenerator::getInstance();
 
   while (candidates_.size() < size_) {
-//  for (size_t i {}; i < size_; i++) {
     int y = gen->getInt() % candidates.size();
-    //std::cout << "y : " << y << std::endl;
+    std::cout << "y :" << y << std::endl;
     candidates_[y] = candidates[y];
   }
 }
