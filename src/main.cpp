@@ -22,13 +22,14 @@ int main() {
 //    );
   }
 
-  auto gen = RandomGenerator::getInstance();
-  int rx = gen->getInt();
-  int range = 20;
-  std::cout << "rx : " << rx << std::endl;
-  int v = rx % range;
-  std::cout << "range : " << range << std::endl;
-  std::cout << "v : " << v << std::endl;
+  ga.gen_tournament();
+ // auto gen = RandomGenerator::getInstance();
+ // int rx = gen->getInt();
+ // int range = 20;
+ // std::cout << "rx : " << rx << std::endl;
+ // int v = rx % range;
+ // std::cout << "range : " << range << std::endl;
+ // std::cout << "v : " << v << std::endl;
 //  double q = x / static_cast<double>(gen->getMaxInt() + 1);
 //  std::cout << gen->getMaxInt() << " : " << x << " : " << q << std::endl;
 //   inline static double random(double biased_factor) {

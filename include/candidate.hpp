@@ -17,6 +17,8 @@ class Candidate {
     virtual void calculate_fitness() = 0;
     void set_fitness(double f);
     double get_fitness();
+
+    virtual void print() = 0;
 };
 
 #endif // CANDIDATE_H_
