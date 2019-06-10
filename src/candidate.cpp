@@ -8,6 +8,7 @@ void Candidate::set_fitness(double f) {
 }
 
 double Candidate::get_fitness() {
+  calculate_fitness();
   return fitness_;
 }
 

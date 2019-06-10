@@ -20,6 +20,7 @@ class GeneticAlgo {
     GeneticAlgo(double mut_rate, double cross_rate, int elit_count, size_t tour_size);
 
     void add_candidate(std::shared_ptr<Candidate> pcandidate);
+    void sort_candidate();
 
     void gen_tournament();
 };

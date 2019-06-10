@@ -9,10 +9,14 @@ void Tournament::new_turn(const std::vector<std::shared_ptr<Candidate>>& candida
 
   auto gen = RandomGenerator::getInstance();
 
+  double best_fitness {};
   while (candidates_.size() < size_) {
     int y = gen->getInt() % candidates.size();
-    std::cout << "y :" << y << std::endl;
     candidates_[y] = candidates[y];
+    double current_fitness = candidates_[y]->get_fitness();
+    if (current_fitness > best_fitness) {
+      best_fitness = current_fitness;
+    }
   }
 }
 

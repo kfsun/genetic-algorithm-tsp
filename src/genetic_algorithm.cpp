@@ -19,3 +19,10 @@ void GeneticAlgo::gen_tournament() {
   ptournament_->new_turn(candidates_);
   ptournament_->print();
 }
+
+void GeneticAlgo::sort_candidate() {
+	std::sort(candidates_.begin(), candidates_.end(),
+			[](const std::shared_ptr<Candidate> l, const std::shared_ptr<Candidate> r) {
+				return l->get_fitness() < r->get_fitness();
+			});
+}

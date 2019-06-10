@@ -11,7 +11,6 @@
 class Tournament {
   private:
     size_t size_;
-//    std::vector<std::shared_ptr<Candidate>> candidates_;
     std::map<size_t, std::shared_ptr<Candidate>> candidates_;
 
   public:
