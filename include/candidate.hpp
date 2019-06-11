@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <route.hpp>
 
 class Candidate {
   protected:
@@ -19,8 +20,8 @@ class Candidate {
     void set_fitness(double f);
     double get_fitness();
 
-    virtual void crossover_with(const std::shared_ptr<Candidate> pCandidate) = 0;
-    virtual void mutate_with(const std::shared_ptr<Candidate> pCandidate) = 0;
+    virtual std::shared_ptr<Route> crossover_with(const std::shared_ptr<Candidate> pCandidate) = 0;
+    virtual std::shared_ptr<Route> mutate_with(const std::shared_ptr<Candidate> pCandidate) = 0;
 
     virtual void print() = 0;
 };

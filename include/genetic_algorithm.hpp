@@ -6,6 +6,7 @@
 #include <memory>
 #include "candidate.hpp"
 #include "tournament.hpp"
+#include "route.hpp"
 
 class GeneticAlgo {
   private:

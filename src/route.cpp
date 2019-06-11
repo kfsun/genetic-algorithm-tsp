@@ -8,10 +8,10 @@ Route::Route(std::shared_ptr<CityCollection> pcc) {
   }
 }
 
-/*Route::Route(std::shared_ptr<CityCollection> pcc, std::vector<size_t> city_indice) {
-  pcc_ = pcc;
-  city_indice_ = city_indice;
-}*/
+//Route::Route(std::shared_ptr<CityCollection> pcc, std::vector<int> city_indice) {
+//  pcc_ = pcc;
+//  city_indice_ = city_indice;
+//}
 
 double Route::distance() {
   if (city_indice_.empty()) {

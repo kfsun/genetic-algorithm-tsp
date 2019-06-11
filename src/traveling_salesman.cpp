@@ -10,16 +10,23 @@ void TravelingSalesman::calculate_fitness() {
 }
 
 void TravelingSalesman::print() {
-  std::cout << "My route: ";
+  std::cout << "TravelingSalesman route: ";
   my_route_->print();
   std::cout << "  distance: " << my_route_->distance() << std::endl;
   std::cout << "  fitness: " << this->fitness_ << std::endl;
 }
 
-void TravelingSalesman::crossover_with(const std::shared_ptr<Candidate> pCandidate) {
+std::shared_ptr<Route> TravelingSalesman::crossover_with(const std::shared_ptr<Candidate> pCandidate) {
+  auto psalesman = std::dynamic_pointer_cast<TravelingSalesman>(pCandidate);
+  if (psalesman) {
+//        std::cout << "Downcasted pointer says: ";
+//        downcastedPtr->f();
+  }
+  return nullptr;
 }
 
-void TravelingSalesman::mutate_with(const std::shared_ptr<Candidate> pCandidate) {
+std::shared_ptr<Route> TravelingSalesman::mutate_with(const std::shared_ptr<Candidate> pCandidate) {
+  return nullptr;
 }
 
 /*

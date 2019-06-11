@@ -10,12 +10,13 @@ class Route {
 
   private:
     std::shared_ptr<CityCollection> pcc_;
-    std::vector<size_t> city_indice_;
+    std::vector<int> city_indice_;
 
   public:
     //Route() = default;
     Route(std::shared_ptr<CityCollection> pcc);
-    //Route(std::shared_ptr<CityCollection> pcc, std::vector<size_t> indice);
+    //Route(std::shared_ptr<CityCollection> pcc, std::vector<int> indice);
+    //std::vector<int> gen_randam_part();
 
     double distance();
     void print();

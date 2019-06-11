@@ -44,6 +44,15 @@ void GeneticAlgo::crossover() {
     auto p1 = candidates_[i-1];
     auto p2 = candidates_[i];
 
+//    p2->print();
+    auto proute = candidates_[i-1]->crossover_with(candidates_[i]);
+//    proute->print();
+//    auto downcastedPtr = std::dynamic_pointer_cast<TravelingSalesman>(p1);
+//    if (downcastedPtr) {
+//      std::cout << "Downcasted pointer says: ";
+//      downcastedPtr->print();
+//    }
+
   }
 }
 
