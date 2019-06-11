@@ -30,6 +30,13 @@ int main() {
     loopCount++;
   }
 
+  auto pd1 {std::make_shared<Route>(pcities)};
+  pd1->print();
+  auto pd2 {std::make_shared<Route>(*pd1)};
+  pd2->print();
+  auto pd3 = *pd1 + *pd2;
+  pd3->print();
+
   //ga.sort_candidate();
   //ga.gen_tournament();
 
