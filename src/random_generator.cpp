@@ -8,8 +8,6 @@
 #include <boost/random/uniform_real.hpp>
 #include <boost/random/uniform_int.hpp>
 
-using namespace std;
-
 RandomGenerator* RandomGenerator::instance = 0;
 
 RandomGenerator* RandomGenerator::getInstance() {

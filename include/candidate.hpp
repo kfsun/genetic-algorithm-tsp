@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 
 class Candidate {
   protected:
@@ -17,6 +18,9 @@ class Candidate {
     virtual void calculate_fitness() = 0;
     void set_fitness(double f);
     double get_fitness();
+
+    virtual void crossover_with(const std::shared_ptr<Candidate> pCandidate) = 0;
+    virtual void mutate_with(const std::shared_ptr<Candidate> pCandidate) = 0;
 
     virtual void print() = 0;
 };

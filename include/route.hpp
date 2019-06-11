@@ -15,7 +15,7 @@ class Route {
   public:
     //Route() = default;
     Route(std::shared_ptr<CityCollection> pcc);
-    Route(std::shared_ptr<CityCollection> pcc, std::vector<size_t> indice);
+    //Route(std::shared_ptr<CityCollection> pcc, std::vector<size_t> indice);
 
     double distance();
     void print();

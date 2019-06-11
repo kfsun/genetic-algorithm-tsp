@@ -21,8 +21,35 @@ void GeneticAlgo::gen_tournament() {
 }
 
 void GeneticAlgo::sort_candidate() {
-	std::sort(candidates_.begin(), candidates_.end(),
+	std::sort(
+    candidates_.begin(),
+    candidates_.end(),
 			[](const std::shared_ptr<Candidate> l, const std::shared_ptr<Candidate> r) {
 				return l->get_fitness() < r->get_fitness();
 			});
 }
+
+void GeneticAlgo::evolve() {
+  sort_candidate();
+  crossover();
+  mutate();
+}
+
+void GeneticAlgo::crossover() {
+  if (candidates_.empty()) {
+    return;
+  }
+
+  for (size_t i {1}; i < candidates_.size(); i++) {
+    auto p1 = candidates_[i-1];
+    auto p2 = candidates_[i];
+
+  }
+}
+
+void GeneticAlgo::mutate() {
+  if (candidates_.empty()) {
+    return;
+  }
+}
+

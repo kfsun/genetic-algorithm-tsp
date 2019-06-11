@@ -16,6 +16,12 @@ void TravelingSalesman::print() {
   std::cout << "  fitness: " << this->fitness_ << std::endl;
 }
 
+void TravelingSalesman::crossover_with(const std::shared_ptr<Candidate> pCandidate) {
+}
+
+void TravelingSalesman::mutate_with(const std::shared_ptr<Candidate> pCandidate) {
+}
+
 /*
 size_t Candidate::get_chromosome_length() {
   return chromosome_.size();

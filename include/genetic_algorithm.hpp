@@ -18,11 +18,14 @@ class GeneticAlgo {
 
   public:
     GeneticAlgo(double mut_rate, double cross_rate, int elit_count, size_t tour_size);
-
+    void evolve();
     void add_candidate(std::shared_ptr<Candidate> pcandidate);
-    void sort_candidate();
-
     void gen_tournament();
+
+  private:
+    void sort_candidate();
+    void crossover();
+    void mutate();
 };
 
 #endif // GENETIC_ALGORITHM_H_

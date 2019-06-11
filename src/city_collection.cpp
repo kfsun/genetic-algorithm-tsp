@@ -20,7 +20,7 @@ std::shared_ptr<City> CityCollection::get_city(size_t offset) {
 
 void CityCollection::print() {
   for (auto c : cities_) {
-    std::cout << "c { " << c->getX() << " , " << c->getY() << " }" << endl;
+    std::cout << "c { " << c->getX() << " , " << c->getY() << " }" << std::endl;
   }
 }
 

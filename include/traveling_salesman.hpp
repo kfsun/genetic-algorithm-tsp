@@ -16,6 +16,9 @@ class TravelingSalesman : public Candidate {
     TravelingSalesman(std::shared_ptr<CityCollection> pcc);
 
     void calculate_fitness() override;
+    void crossover_with(const std::shared_ptr<Candidate> pCandidate) override;
+    void mutate_with(const std::shared_ptr<Candidate> pCandidate) override;
+
     void print() override;
 //    size_t get_chromosome_length();
 //    void copy_chromosome(std::vector<int>& chromosome);
