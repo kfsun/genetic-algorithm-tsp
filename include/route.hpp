@@ -6,6 +6,7 @@
 #include <memory>
 #include "city_collection.hpp"
 #include "random_generator.hpp"
+#include <algorithm>
 
 class Route {
   protected:

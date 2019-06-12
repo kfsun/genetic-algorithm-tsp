@@ -13,6 +13,8 @@ std::shared_ptr<Route> Route::operator+(const Route& route) {
 //  return copy;
 
   auto copy_self {std::make_shared<Route>(*this)};
+  // init new route to -1
+  copy_self->city_indice_.assign(copy_self->city_indice_.size(), -1);
   //copy_self->pcc_->print();
 
   auto gen = RandomGenerator::getInstance();
@@ -40,15 +42,27 @@ std::shared_ptr<Route> Route::operator+(const Route& route) {
   std::cout << "cut1 : " << cut1 <<std::endl;
   std::cout << "cut2 : " << cut2 <<std::endl;
 
-  for (size_t i {}; i < city_indice_.size(); i++) {
+  // copy to new route from first parent
+  std::copy(this->city_indice_.begin()+cut1, this->city_indice_.begin()+cut2+1, copy_self->city_indice_.begin()+cut1);
+
+  // copy to new route from second parent
+  auto find_ptr = std::find(copy_self->city_indice_.rbegin(), copy_self->city_indice_.rend(), -1);
+  while (find_ptr != copy_self->city_indice_.rend()) {
+    *find_ptr = 999;
+    find_ptr = std::find(copy_self->city_indice_.rbegin(), copy_self->city_indice_.rend(), -1);
+  }
+
+  /*for (size_t i {}; i < city_indice_.size(); i++) {
     if (i >= cut1 && i <= cut2) {
       continue;
     }
+    std::cout << "on " << i << std::endl;
+
     for (int j {static_cast<int>(city_indice_.size()) - 1}; j > -1; j--) {
-      //copy_self->city_indice_[i] = 999;
-      route.city_indice_[j]
+      std::cout << route.city_indice_[j] ;
     }
-  }
+    std::cout << std::endl;
+  }*/
 
   return copy_self;
 }
