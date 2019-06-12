@@ -48,7 +48,15 @@ std::shared_ptr<Route> Route::operator+(const Route& route) {
   // copy to new route from second parent
   auto find_ptr = std::find(copy_self->city_indice_.rbegin(), copy_self->city_indice_.rend(), -1);
   while (find_ptr != copy_self->city_indice_.rend()) {
-    *find_ptr = 999;
+    for (size_t i {}; i < route.city_indice_.size(); i++) {
+        auto a_ptr = std::find(copy_self->city_indice_.begin(), copy_self->city_indice_.end(), route.city_indice_[i]);
+        if (a_ptr == copy_self->city_indice_.end()) {
+          *find_ptr = route.city_indice_[i];
+          break;
+        } else {
+          continue;
+        }
+    }
     find_ptr = std::find(copy_self->city_indice_.rbegin(), copy_self->city_indice_.rend(), -1);
   }
 
