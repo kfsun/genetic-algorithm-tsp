@@ -29,6 +29,11 @@ void GeneticAlgo::sort_candidate() {
 			});
 }
 
+void GeneticAlgo::print_best_candidate() {
+  sort_candidate();
+  candidates_[0]->print();
+}
+
 void GeneticAlgo::evolve() {
   sort_candidate();
 
@@ -42,12 +47,10 @@ void GeneticAlgo::evolve() {
   for (auto c : this->candidates_) {
     auto psalesman = std::dynamic_pointer_cast<TravelingSalesman>(c);
     if (psalesman) {
-//      psalesman->set_new_route(this->new_routes_[i]);
+      psalesman->set_new_route(this->new_routes_[i]);
       i++;
     }
   }
-
-  sort_candidate();
 }
 
 void GeneticAlgo::crossover() {
@@ -56,18 +59,24 @@ void GeneticAlgo::crossover() {
   }
 
   for (size_t i {1}; i < candidates_.size(); i++) {
-    new_routes_.push_back(
-      candidates_[i-1]->crossover_with(candidates_[i])
-    );
+    auto pnew_route = candidates_[i-1]->crossover_with(candidates_[i]);
+    if (pnew_route != nullptr) {
+      new_routes_.push_back(pnew_route);
+    } else {
+      std::cout << "crossover got a nullptr" << std::endl;
+    }
   }
 
-  new_routes_.push_back(
-    candidates_[candidates_.size()-1]->crossover_with(candidates_[0])
-  );
+  auto pnew_route = candidates_[candidates_.size()-1]->crossover_with(candidates_[0]);
+  if (pnew_route != nullptr) {
+    new_routes_.push_back(pnew_route);
+  } else {
+    std::cout << "crossover got a nullptr" << std::endl;
+  }
 }
 
 void GeneticAlgo::mutate() {
-  if (candidates_.empty()) {
+  if (new_routes_.empty()) {
     return;
   }
 

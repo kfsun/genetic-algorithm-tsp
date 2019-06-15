@@ -20,14 +20,11 @@ std::shared_ptr<Route> TravelingSalesman::crossover_with(const std::shared_ptr<C
   auto p_another_salesman = std::dynamic_pointer_cast<TravelingSalesman>(pCandidate);
   if (p_another_salesman) {
     auto new_route = *my_route_ + *(p_another_salesman->my_route_);
-    new_route->print();
+    return new_route;
   }
   return nullptr;
 }
 
-std::shared_ptr<Route> TravelingSalesman::mutate_with(const std::shared_ptr<Candidate> pCandidate) {
-  return nullptr;
-}
 
 /*
 size_t Candidate::get_chromosome_length() {

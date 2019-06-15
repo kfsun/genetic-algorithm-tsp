@@ -21,7 +21,6 @@ class Candidate {
     double get_fitness();
 
     virtual std::shared_ptr<Route> crossover_with(const std::shared_ptr<Candidate> pCandidate) = 0;
-    virtual std::shared_ptr<Route> mutate_with(const std::shared_ptr<Candidate> pCandidate) = 0;
 
     virtual void print() = 0;
 };

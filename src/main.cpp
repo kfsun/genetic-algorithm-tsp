@@ -3,9 +3,7 @@
 #include <memory>
 #include "city_collection.hpp"
 #include "traveling_salesman.hpp"
-#include "route.hpp"
 #include "genetic_algorithm.hpp"
-#include "random_generator.hpp"
 
 int main() {
   size_t total_city {10};
@@ -19,31 +17,16 @@ int main() {
   }
 
   //size_t maxLoop {10000};
-  size_t maxLoop {1};
+  size_t maxLoop {20};
   size_t loopCount {};
   while (loopCount < maxLoop) {
     ga.evolve();
+    ga.print_best_candidate();
     loopCount++;
   }
 
-//  auto pd1 {std::make_shared<Route>(pcities)};
-//  pd1->print();
-//  auto pd2 {std::make_shared<Route>(*pd1)};
-//  pd2->print();
-//  std::cout << "cross" << std::endl;
-//  auto pd3 = *pd1 + *pd2;
-//  pd3->print();
-//  std::cout << "mut" << std::endl;
-//  pd3->mutate(0.3);
-//  pd3->print();
-
   //ga.sort_candidate();
   //ga.gen_tournament();
-
-//  for (auto person : salesmen) {
-//    person->calculate_fitness();
-//    person->print();
-//  }
 
   return 0;
 }

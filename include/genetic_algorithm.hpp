@@ -24,6 +24,7 @@ class GeneticAlgo {
     void evolve();
     void add_candidate(std::shared_ptr<Candidate> pcandidate);
     void gen_tournament();
+    void print_best_candidate();
 
   private:
     void sort_candidate();
