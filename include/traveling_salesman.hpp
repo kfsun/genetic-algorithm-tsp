@@ -19,6 +19,8 @@ class TravelingSalesman : public Candidate {
       this->my_route_ = pnew_route;
     }
 
+    std::shared_ptr<Route> get_copy_of_route();
+
     void calculate_fitness() override;
     std::shared_ptr<Route> crossover_with(const std::shared_ptr<Candidate> pCandidate) override;
 

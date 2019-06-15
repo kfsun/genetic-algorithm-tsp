@@ -11,13 +11,12 @@ void GeneticAlgo::add_candidate(std::shared_ptr<Candidate> pcandidate) {
   candidates_.push_back(pcandidate);
 }
 
-void GeneticAlgo::gen_tournament() {
+std::shared_ptr<Candidate> GeneticAlgo::gen_tournament() {
   if (candidates_.empty()) {
-    return;
+    return nullptr;
   }
 
-  ptournament_->new_turn(candidates_);
-  ptournament_->print();
+  return ptournament_->new_turn(candidates_);
 }
 
 void GeneticAlgo::sort_candidate() {
@@ -34,11 +33,27 @@ void GeneticAlgo::print_best_candidate() {
   candidates_[0]->print();
 }
 
-void GeneticAlgo::evolve() {
+void GeneticAlgo::select_elitism() {
   sort_candidate();
 
+  for (size_t i {}; i < elitism_count_; i++) {
+    auto psalesman = std::dynamic_pointer_cast<TravelingSalesman>(candidates_[i]);
+    if (psalesman) {
+      new_routes_.push_back(
+        psalesman->get_copy_of_route()
+      );
+    }
+  }
+}
+
+void GeneticAlgo::evolve() {
+  // new routes will be stored in the vector
+  // and assign to salesman later on.
   new_routes_.clear();
 
+  sort_candidate();
+
+  select_elitism();
   crossover();
   mutate();
 
@@ -58,20 +73,13 @@ void GeneticAlgo::crossover() {
     return;
   }
 
-  for (size_t i {1}; i < candidates_.size(); i++) {
-    auto pnew_route = candidates_[i-1]->crossover_with(candidates_[i]);
+  for (int i {elitism_count_}; i < candidates_.size(); i++) {
+    auto pnew_route = candidates_[i]->crossover_with(this->gen_tournament());
     if (pnew_route != nullptr) {
       new_routes_.push_back(pnew_route);
     } else {
       std::cout << "crossover got a nullptr" << std::endl;
     }
-  }
-
-  auto pnew_route = candidates_[candidates_.size()-1]->crossover_with(candidates_[0]);
-  if (pnew_route != nullptr) {
-    new_routes_.push_back(pnew_route);
-  } else {
-    std::cout << "crossover got a nullptr" << std::endl;
   }
 }
 

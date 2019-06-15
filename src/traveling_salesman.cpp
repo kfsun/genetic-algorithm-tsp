@@ -16,7 +16,16 @@ void TravelingSalesman::print() {
   std::cout << "  fitness: " << this->fitness_ << std::endl;
 }
 
+std::shared_ptr<Route> TravelingSalesman::get_copy_of_route() {
+  return std::make_shared<Route>(*(this->my_route_));
+}
+
 std::shared_ptr<Route> TravelingSalesman::crossover_with(const std::shared_ptr<Candidate> pCandidate) {
+  if (pCandidate == nullptr) {
+    std::cout << "nullptr received in crossover_with" << std::endl;
+    return nullptr;
+  }
+
   auto p_another_salesman = std::dynamic_pointer_cast<TravelingSalesman>(pCandidate);
   if (p_another_salesman) {
     auto new_route = *my_route_ + *(p_another_salesman->my_route_);

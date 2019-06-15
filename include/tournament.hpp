@@ -16,7 +16,7 @@ class Tournament {
   public:
     explicit Tournament(size_t size);
 
-    void new_turn(const std::vector<std::shared_ptr<Candidate>>& candidates);
+    std::shared_ptr<Candidate> new_turn(const std::vector<std::shared_ptr<Candidate>>& candidates);
     //void add_candidate(std::shared_ptr<Candidate> pcandidate);
     void print();
 };

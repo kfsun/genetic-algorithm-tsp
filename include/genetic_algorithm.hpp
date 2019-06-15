@@ -23,13 +23,14 @@ class GeneticAlgo {
     GeneticAlgo(double mut_rate, double cross_rate, int elit_count, size_t tour_size);
     void evolve();
     void add_candidate(std::shared_ptr<Candidate> pcandidate);
-    void gen_tournament();
+    std::shared_ptr<Candidate> gen_tournament();
     void print_best_candidate();
 
   private:
     void sort_candidate();
     void crossover();
     void mutate();
+    void select_elitism();
 };
 
 #endif // GENETIC_ALGORITHM_H_
