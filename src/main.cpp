@@ -14,12 +14,8 @@ int main() {
   GeneticAlgo ga {0.001, 0.9, 2, 5}; 
 
   size_t total_candidate = 5;
-//  std::vector<std::shared_ptr<TravelingSalesman>> salesmen;
   for (size_t i {}; i < total_candidate; i++) {
     ga.add_candidate(std::make_shared<TravelingSalesman>(pcities));
-//    salesmen.push_back(
-//      std::make_shared<TravelingSalesman>(pcities)
-//    );
   }
 
   //size_t maxLoop {10000};
@@ -30,12 +26,16 @@ int main() {
     loopCount++;
   }
 
-  auto pd1 {std::make_shared<Route>(pcities)};
-  pd1->print();
-  auto pd2 {std::make_shared<Route>(*pd1)};
-  pd2->print();
-  auto pd3 = *pd1 + *pd2;
-  pd3->print();
+//  auto pd1 {std::make_shared<Route>(pcities)};
+//  pd1->print();
+//  auto pd2 {std::make_shared<Route>(*pd1)};
+//  pd2->print();
+//  std::cout << "cross" << std::endl;
+//  auto pd3 = *pd1 + *pd2;
+//  pd3->print();
+//  std::cout << "mut" << std::endl;
+//  pd3->mutate(0.3);
+//  pd3->print();
 
   //ga.sort_candidate();
   //ga.gen_tournament();

@@ -17,10 +17,10 @@ void TravelingSalesman::print() {
 }
 
 std::shared_ptr<Route> TravelingSalesman::crossover_with(const std::shared_ptr<Candidate> pCandidate) {
-  auto psalesman = std::dynamic_pointer_cast<TravelingSalesman>(pCandidate);
-  if (psalesman) {
-//        std::cout << "Downcasted pointer says: ";
-//        downcastedPtr->f();
+  auto p_another_salesman = std::dynamic_pointer_cast<TravelingSalesman>(pCandidate);
+  if (p_another_salesman) {
+    auto new_route = *my_route_ + *(p_another_salesman->my_route_);
+    new_route->print();
   }
   return nullptr;
 }

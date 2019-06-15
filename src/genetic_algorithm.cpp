@@ -31,8 +31,23 @@ void GeneticAlgo::sort_candidate() {
 
 void GeneticAlgo::evolve() {
   sort_candidate();
+
+  new_routes_.clear();
+
   crossover();
   mutate();
+
+  //assign new route to salesman
+  int i = 0;
+  for (auto c : this->candidates_) {
+    auto psalesman = std::dynamic_pointer_cast<TravelingSalesman>(c);
+    if (psalesman) {
+//      psalesman->set_new_route(this->new_routes_[i]);
+      i++;
+    }
+  }
+
+  sort_candidate();
 }
 
 void GeneticAlgo::crossover() {
@@ -41,24 +56,23 @@ void GeneticAlgo::crossover() {
   }
 
   for (size_t i {1}; i < candidates_.size(); i++) {
-    auto p1 = candidates_[i-1];
-    auto p2 = candidates_[i];
-
-//    p2->print();
-    auto proute = candidates_[i-1]->crossover_with(candidates_[i]);
-//    proute->print();
-//    auto downcastedPtr = std::dynamic_pointer_cast<TravelingSalesman>(p1);
-//    if (downcastedPtr) {
-//      std::cout << "Downcasted pointer says: ";
-//      downcastedPtr->print();
-//    }
-
+    new_routes_.push_back(
+      candidates_[i-1]->crossover_with(candidates_[i])
+    );
   }
+
+  new_routes_.push_back(
+    candidates_[candidates_.size()-1]->crossover_with(candidates_[0])
+  );
 }
 
 void GeneticAlgo::mutate() {
   if (candidates_.empty()) {
     return;
+  }
+
+  for (auto r : new_routes_) {
+    r->mutate(this->mutation_rate_);
   }
 }
 

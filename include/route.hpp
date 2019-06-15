@@ -18,10 +18,8 @@ class Route {
   public:
     //Route() = default;
     Route(std::shared_ptr<CityCollection> pcc);
-    //Route(std::shared_ptr<CityCollection> pcc, std::vector<int> indice);
-    //std::vector<int> gen_randam_part();
-    //Route& operator+(const Route& route);
     std::shared_ptr<Route> operator+(const Route& route);
+    void mutate(double mutation_rate);
 
     double distance();
     void print();

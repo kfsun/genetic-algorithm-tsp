@@ -7,6 +7,7 @@
 #include "candidate.hpp"
 #include "tournament.hpp"
 #include "route.hpp"
+#include "traveling_salesman.hpp"
 
 class GeneticAlgo {
   private:
@@ -16,6 +17,7 @@ class GeneticAlgo {
 
     std::vector<std::shared_ptr<Candidate>> candidates_;
     std::unique_ptr<Tournament> ptournament_;
+    std::vector<std::shared_ptr<Route>> new_routes_;
 
   public:
     GeneticAlgo(double mut_rate, double cross_rate, int elit_count, size_t tour_size);

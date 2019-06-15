@@ -10,10 +10,14 @@
 
 class TravelingSalesman : public Candidate {
   private:
-    std::unique_ptr<Route> my_route_; 
+    std::shared_ptr<Route> my_route_; 
 
   public:
     TravelingSalesman(std::shared_ptr<CityCollection> pcc);
+
+    void set_new_route(std::shared_ptr<Route> pnew_route) {
+      this->my_route_ = pnew_route;
+    }
 
     void calculate_fitness() override;
     std::shared_ptr<Route> crossover_with(const std::shared_ptr<Candidate> pCandidate) override;
