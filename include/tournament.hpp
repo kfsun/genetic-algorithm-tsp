@@ -11,13 +11,12 @@
 class Tournament {
   private:
     size_t size_;
-    std::map<size_t, std::shared_ptr<Candidate>> candidates_;
+    std::map<size_t, CandidatePtr> candidates_;
 
   public:
     explicit Tournament(size_t size);
 
-    std::shared_ptr<Candidate> new_turn(const std::vector<std::shared_ptr<Candidate>>& candidates);
-    //void add_candidate(std::shared_ptr<Candidate> pcandidate);
+    CandidatePtr new_turn(const std::vector<CandidatePtr>& candidates);
     void print();
 };
 

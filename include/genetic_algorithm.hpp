@@ -15,15 +15,15 @@ class GeneticAlgo {
     double crossover_rate_ {0.9};
     int elitism_count_ {2};
 
-    std::vector<std::shared_ptr<Candidate>> candidates_;
+    std::vector<CandidatePtr> candidates_;
     std::unique_ptr<Tournament> ptournament_;
-    std::vector<std::shared_ptr<Route>> new_routes_;
+    std::vector<RoutePtr> new_routes_;
 
   public:
     GeneticAlgo(double mut_rate, double cross_rate, int elit_count, size_t tour_size);
     void evolve();
-    void add_candidate(std::shared_ptr<Candidate> pcandidate);
-    std::shared_ptr<Candidate> gen_tournament();
+    void add_candidate(CandidatePtr pcandidate);
+    CandidatePtr gen_tournament();
     void print_best_candidate();
 
   private:

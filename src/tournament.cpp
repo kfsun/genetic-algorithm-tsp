@@ -4,7 +4,7 @@ Tournament::Tournament(size_t size) {
   size_ = size;
 }
 
-std::shared_ptr<Candidate> Tournament::new_turn(const std::vector<std::shared_ptr<Candidate>>& candidates) {
+CandidatePtr Tournament::new_turn(const std::vector<CandidatePtr>& candidates) {
   candidates_.clear();
 
   auto gen = RandomGenerator::getInstance();
@@ -31,12 +31,4 @@ void Tournament::print() {
     val->print();
   }
 }
-
-/*
-void Tournament::add_candidate(std::shared_ptr<Candidate> pcandidate) {
-  if (candidates_.size() < size_) {
-    candidates_.push_back(pcandidate);
-  }
-}
-*/
 

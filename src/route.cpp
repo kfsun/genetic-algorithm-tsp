@@ -21,7 +21,7 @@ void Route::mutate(double mutation_rate) {
   }
 }
 
-std::shared_ptr<Route> Route::operator+(const Route& route) {
+RoutePtr Route::operator+(const Route& route) {
   auto copy_self {std::make_shared<Route>(*this)};
 
   // init new route to -1
@@ -69,11 +69,6 @@ std::shared_ptr<Route> Route::operator+(const Route& route) {
 
   return copy_self;
 }
-
-//Route::Route(std::shared_ptr<CityCollection> pcc, std::vector<int> city_indice) {
-//  pcc_ = pcc;
-//  city_indice_ = city_indice;
-//}
 
 double Route::distance() {
   if (city_indice_.empty()) {

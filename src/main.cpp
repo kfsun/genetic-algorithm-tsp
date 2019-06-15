@@ -11,18 +11,20 @@ int main() {
 
   GeneticAlgo ga {0.001, 0.9, 2, 5}; 
 
-  size_t total_candidate = 10;
+  size_t total_candidate = 100;
   for (size_t i {}; i < total_candidate; i++) {
     ga.add_candidate(std::make_shared<TravelingSalesman>(pcities));
   }
 
   //size_t maxLoop {10000};
-  size_t maxLoop {10};
+  size_t maxLoop {100};
   size_t loopCount {};
   while (loopCount < maxLoop) {
+    std::cout << " start loopCount " << loopCount << std::endl;
     ga.evolve();
     ga.print_best_candidate();
     loopCount++;
+    std::cout << " done loopCount " << loopCount - 1 << std::endl;
   }
 
   return 0;

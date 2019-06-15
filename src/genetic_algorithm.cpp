@@ -7,11 +7,11 @@ GeneticAlgo::GeneticAlgo(double mut_rate, double cross_rate, int elit_count, siz
   ptournament_ {std::make_unique<Tournament>(tour_size)} {
 }
 
-void GeneticAlgo::add_candidate(std::shared_ptr<Candidate> pcandidate) {
+void GeneticAlgo::add_candidate(CandidatePtr pcandidate) {
   candidates_.push_back(pcandidate);
 }
 
-std::shared_ptr<Candidate> GeneticAlgo::gen_tournament() {
+CandidatePtr GeneticAlgo::gen_tournament() {
   if (candidates_.empty()) {
     return nullptr;
   }
@@ -23,7 +23,7 @@ void GeneticAlgo::sort_candidate() {
 	std::sort(
     candidates_.begin(),
     candidates_.end(),
-			[](const std::shared_ptr<Candidate> l, const std::shared_ptr<Candidate> r) {
+			[](const CandidatePtr l, const CandidatePtr r) {
 				return l->get_fitness() < r->get_fitness();
 			});
 }
@@ -49,23 +49,33 @@ void GeneticAlgo::select_elitism() {
 void GeneticAlgo::evolve() {
   // new routes will be stored in the vector
   // and assign to salesman later on.
+  std::cout << "start evolve : clear vector ";
   new_routes_.clear();
 
+  std::cout << ": sort_candidate ";
   sort_candidate();
 
+  std::cout << ": select_elitism ";
   select_elitism();
+  std::cout << ": crossover ";
   crossover();
+  std::cout << ": mutate ";
   mutate();
 
+  std::cout << ": assigning new route";
   //assign new route to salesman
   int i = 0;
   for (auto c : this->candidates_) {
     auto psalesman = std::dynamic_pointer_cast<TravelingSalesman>(c);
     if (psalesman) {
-      psalesman->set_new_route(this->new_routes_[i]);
+      psalesman->set_new_route(new_routes_[i]);
       i++;
+    } else {
+      std::cout << " !!!!nullptr!!! ";
     }
   }
+
+  std::cout << std::endl;
 }
 
 void GeneticAlgo::crossover() {
