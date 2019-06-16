@@ -49,20 +49,20 @@ void GeneticAlgo::select_elitism() {
 void GeneticAlgo::evolve() {
   // new routes will be stored in the vector
   // and assign to salesman later on.
-  std::cout << "start evolve : clear vector ";
+//  std::cout << "start evolve : clear vector ";
   new_routes_.clear();
 
-  std::cout << ": sort_candidate ";
+//  std::cout << ": sort_candidate ";
   sort_candidate();
 
-  std::cout << ": select_elitism ";
+//  std::cout << ": select_elitism ";
   select_elitism();
-  std::cout << ": crossover ";
+//  std::cout << ": crossover ";
   crossover();
-  std::cout << ": mutate ";
+//  std::cout << ": mutate ";
   mutate();
 
-  std::cout << ": assigning new route";
+//  std::cout << ": assigning new route";
   //assign new route to salesman
   int i = 0;
   for (auto c : this->candidates_) {
@@ -75,7 +75,7 @@ void GeneticAlgo::evolve() {
     }
   }
 
-  std::cout << std::endl;
+//  std::cout << std::endl;
 }
 
 void GeneticAlgo::crossover() {

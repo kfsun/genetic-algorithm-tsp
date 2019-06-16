@@ -27,7 +27,7 @@ class Route {
     void mutate(double mutation_rate);
 
     double distance();
-    void print();
+    void print() const;
 };
 
 

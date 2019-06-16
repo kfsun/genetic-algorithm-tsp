@@ -16,7 +16,8 @@ class TravelingSalesman : public Candidate {
     TravelingSalesman(std::shared_ptr<CityCollection> pcc);
 
     inline void set_new_route(RoutePtr pnew_route) {
-      //my_route_ = pnew_route;
+//      std::cout << "assign new route" << std::endl;
+      my_route_ = pnew_route;
     }
 
     RoutePtr get_copy_of_route();
