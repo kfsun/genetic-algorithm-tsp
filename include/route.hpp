@@ -21,6 +21,7 @@ class Route {
 
   public:
     //Route() = default;
+    ~Route();
     Route(std::shared_ptr<CityCollection> pcc);
     RoutePtr operator+(const Route& route);
     void mutate(double mutation_rate);

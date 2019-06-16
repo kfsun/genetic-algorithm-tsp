@@ -14,6 +14,10 @@ CityCollection::CityCollection(size_t number_of_city) {
   }
 }
 
+CityCollection::~CityCollection() {
+  std::cout << "deleting city collection object" << std::endl;
+}
+
 std::shared_ptr<City> CityCollection::get_city(size_t offset) {
   return cities_[offset];
 }

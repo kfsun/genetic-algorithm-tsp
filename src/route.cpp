@@ -7,6 +7,10 @@ Route::Route(std::shared_ptr<CityCollection> pcc) {
   }
 }
 
+Route::~Route() {
+//  std::cout << "deleting route object" << std::endl;
+}
+
 void Route::mutate(double mutation_rate) {
   auto gen = RandomGenerator::getInstance();
 
