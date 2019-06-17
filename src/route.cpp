@@ -14,15 +14,17 @@ Route::~Route() {
 void Route::mutate(double mutation_rate) {
   auto gen = RandomGenerator::getInstance();
 
+  //std::cout << " ## before mutate "; print(); std::cout <<std::endl;
   for (size_t i {}; i < city_indice_.size(); i++) {
     auto zz = gen->getDouble();
     if (mutation_rate > zz) {
       int new_pos = gen->getInt() % city_indice_.size();
-      city_indice_[new_pos] ^= city_indice_[i];
-      city_indice_[i] ^= city_indice_[new_pos];
-      city_indice_[new_pos] ^= city_indice_[i];
+      int tmp = city_indice_[i];
+      city_indice_[new_pos] = city_indice_[i];
+      city_indice_[i] = tmp;
     }
   }
+  std::cout << " ## after mutate "; print(); std::cout <<std::endl;
 }
 
 RoutePtr Route::operator+(const Route& route) {
@@ -37,7 +39,7 @@ RoutePtr Route::operator+(const Route& route) {
   int cut2 = gen->getInt() % city_indice_.size();
 
   while (cut1 == cut2) {
-    std::cout << "cut1 == cut2" << std::endl;
+    //std::cout << "cut1 == cut2" << std::endl;
     cut2 = gen->getInt() % city_indice_.size();
 //    int y = gen->getInt() % candidates.size();
 //    candidates_[y] = candidates[y];
@@ -55,30 +57,31 @@ RoutePtr Route::operator+(const Route& route) {
 
   // copy to new route from first parent
   std::copy(this->city_indice_.begin()+cut1, this->city_indice_.begin()+cut2+1, copy_self->city_indice_.begin()+cut1);
-  std::cout << "cut1 : " << cut1 << " - cut2 : " << cut2 <<  " -- >  " ;
-  copy_self->print();
-  std::cout <<std::endl;
-  route.print();
+  //std::cout << "cut1 : " << cut1 << " - cut2 : " << cut2 <<  " -- >  " ;
+  //copy_self->print();
+  //std::cout <<std::endl;
+  //std::cout << " ### second parent : " ; route.print(); std::cout <<std::endl;
 
   // copy to new route from second parent
   auto pempty_slot = std::find(copy_self->city_indice_.rbegin(), copy_self->city_indice_.rend(), -1);
   while (pempty_slot != copy_self->city_indice_.rend()) {
-    std::cout << "!!! empty_slot !!!" << std::endl;
+    //std::cout << "!!! empty_slot !!!" << std::endl;
     for (size_t i {}; i < route.city_indice_.size(); i++) {
-        std::cout << "checking value " << route.city_indice_[i] << std::endl;
+        //std::cout << "checking value : " << route.city_indice_[i] ; copy_self->print(); std::cout <<std::endl;
         auto a_ptr = std::find(copy_self->city_indice_.begin(), copy_self->city_indice_.end(), route.city_indice_[i]);
         if (a_ptr == copy_self->city_indice_.end()) {
-          std::cout << "not found and assign " << route.city_indice_[i] << std::endl;
           *pempty_slot = route.city_indice_[i];
+          //std::cout << route.city_indice_[i] << " not found in child and assign "; copy_self->print(); std::cout <<std::endl;
           break;
-        } else {
-          std::cout << "found and skip " << route.city_indice_[i] << std::endl;
+//        } else {
+//          std::cout << "found and skip " << route.city_indice_[i] << " --- " ; copy_self->print(); std::cout <<std::endl;
      //     continue;
         }
     }
     pempty_slot = std::find(copy_self->city_indice_.rbegin(), copy_self->city_indice_.rend(), -1);
   }
 
+  std::cout << " ##new child after crossover "; copy_self->print(); std::cout <<std::endl;
   return copy_self;
 }
 
