@@ -19,7 +19,7 @@ int main() {
   size_t total_city {100};
   auto pcities = std::make_shared<CityCollection>(total_city);
 
-  GeneticAlgo ga {0.001, 0.9, 2, 5}; 
+  GeneticAlgo ga {0.001, 0.9, 4, 5}; 
 
   size_t total_candidate = 100;
   for (size_t i {}; i < total_candidate; i++) {
