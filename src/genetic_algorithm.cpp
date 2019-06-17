@@ -79,16 +79,31 @@ void GeneticAlgo::evolve() {
 }
 
 void GeneticAlgo::crossover() {
+  auto gen = RandomGenerator::getInstance();
+
+  //std::cout << " ## before mutate "; print(); std::cout <<std::endl;
+
   if (candidates_.empty()) {
     return;
   }
 
   for (int i {elitism_count_}; i < candidates_.size(); i++) {
-    auto pnew_route = candidates_[i]->crossover_with(this->gen_tournament());
-    if (pnew_route != nullptr) {
-      new_routes_.push_back(pnew_route);
+    if (crossover_rate_ > gen->getDouble()) {
+      auto pnew_route = candidates_[i]->crossover_with(this->gen_tournament());
+      if (pnew_route != nullptr) {
+        new_routes_.push_back(pnew_route);
+      } else {
+        std::cout << "crossover got a nullptr" << std::endl;
+      }
     } else {
-      std::cout << "crossover got a nullptr" << std::endl;
+      auto psalesman = std::dynamic_pointer_cast<TravelingSalesman>(candidates_[i]);
+      if (psalesman) {
+        new_routes_.push_back(
+          psalesman->get_copy_of_route()
+        );
+      } else {
+        std::cout << " !!!!nullptr!!! ";
+      }
     }
   }
 }

@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include "random_generator.hpp"
 #include "candidate.hpp"
 #include "tournament.hpp"
 #include "route.hpp"
