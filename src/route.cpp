@@ -19,12 +19,10 @@ void Route::mutate(double mutation_rate) {
     auto zz = gen->getDouble();
     if (mutation_rate > zz) {
       int new_pos = gen->getInt() % city_indice_.size();
-      int tmp = city_indice_[i];
-      city_indice_[new_pos] = city_indice_[i];
-      city_indice_[i] = tmp;
+      std::swap(city_indice_[i], city_indice_[new_pos]);
     }
   }
-  std::cout << " ## after mutate "; print(); std::cout <<std::endl;
+  //std::cout << " ## after mutate "; print(); std::cout <<std::endl;
 }
 
 RoutePtr Route::operator+(const Route& route) {
@@ -39,7 +37,6 @@ RoutePtr Route::operator+(const Route& route) {
   int cut2 = gen->getInt() % city_indice_.size();
 
   while (cut1 == cut2) {
-    //std::cout << "cut1 == cut2" << std::endl;
     cut2 = gen->getInt() % city_indice_.size();
 //    int y = gen->getInt() % candidates.size();
 //    candidates_[y] = candidates[y];
@@ -57,9 +54,8 @@ RoutePtr Route::operator+(const Route& route) {
 
   // copy to new route from first parent
   std::copy(this->city_indice_.begin()+cut1, this->city_indice_.begin()+cut2+1, copy_self->city_indice_.begin()+cut1);
-  //std::cout << "cut1 : " << cut1 << " - cut2 : " << cut2 <<  " -- >  " ;
-  //copy_self->print();
-  //std::cout <<std::endl;
+
+  //std::cout << "cut: " << cut1 << " - " << cut2 <<  " -- >  " ; copy_self->print(); std::cout <<std::endl;
   //std::cout << " ### second parent : " ; route.print(); std::cout <<std::endl;
 
   // copy to new route from second parent
@@ -81,7 +77,7 @@ RoutePtr Route::operator+(const Route& route) {
     pempty_slot = std::find(copy_self->city_indice_.rbegin(), copy_self->city_indice_.rend(), -1);
   }
 
-  std::cout << " ##new child after crossover "; copy_self->print(); std::cout <<std::endl;
+  //std::cout << " ##new child after crossover "; copy_self->print(); std::cout <<std::endl;
   return copy_self;
 }
 
