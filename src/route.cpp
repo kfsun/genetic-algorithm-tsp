@@ -1,10 +1,23 @@
 #include "route.hpp"
 
 Route::Route(std::shared_ptr<CityCollection> pcc) {
+  auto gen = RandomGenerator::getInstance();
   pcc_ = pcc;
+
   for (size_t i {} ; i < pcc_->get_size(); i++) {
-    city_indice_.push_back(i);
+    city_indice_.push_back(-1);
   }
+
+  auto pempty_slot = std::find(city_indice_.begin(), city_indice_.end(), -1);
+  while (pempty_slot != city_indice_.end()) {
+    auto idx = gen->getInt() % city_indice_.size();
+    auto isIdxExist = std::find(city_indice_.begin(), city_indice_.end(), idx);
+    if (isIdxExist == city_indice_.end()) {
+      *pempty_slot = idx;
+    }
+    pempty_slot = std::find(city_indice_.begin(), city_indice_.end(), -1);
+  }
+
 }
 
 Route::~Route() {
