@@ -16,10 +16,10 @@
 //} 
   
 int main() {
-  size_t total_city {100};
+  size_t total_city {25};
   auto pcities = std::make_shared<CityCollection>(total_city);
-
-  GeneticAlgo ga {0.001, 0.9, 4, 5}; 
+//double mut_rate, double cross_rate, int elit_count, size_t tour_size)
+  GeneticAlgo ga {0.01, 0.9, 10, 10}; 
 
   size_t total_candidate = 100;
   for (size_t i {}; i < total_candidate; i++) {
