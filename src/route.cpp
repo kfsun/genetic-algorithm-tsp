@@ -65,6 +65,11 @@ RoutePtr Route::operator+(const Route& route) {
     cut1 ^= cut2;
   }
 
+  int half = copy_self->city_indice_.size() >> 1;
+  if ((cut2 - cut1 + 1) >= half) {
+    cut2 = cut1 + half - 1;
+  }
+
   // copy to new route from first parent
   std::copy(this->city_indice_.begin()+cut1, this->city_indice_.begin()+cut2+1, copy_self->city_indice_.begin()+cut1);
 
