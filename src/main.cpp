@@ -26,7 +26,7 @@ int main() {
     ga.add_candidate(std::make_shared<TravelingSalesman>(pcities));
   }
 
-  size_t maxLoop {10000};
+  size_t maxLoop {2000};
   size_t loopCount {};
   while (loopCount < maxLoop) {
     ga.evolve();
@@ -34,6 +34,8 @@ int main() {
     ga.print_best_candidate();
     loopCount++;
   }
+
+  pcities->print();
 
   return 0;
 }

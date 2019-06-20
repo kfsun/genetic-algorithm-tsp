@@ -1,5 +1,6 @@
 #include "traveling_salesman.hpp"
 #include <iostream>
+#include <iomanip>
 #include <algorithm>
 
 TravelingSalesman::TravelingSalesman(std::shared_ptr<CityCollection> pcc) : my_route_{std::make_shared<Route>(pcc)} {
@@ -12,8 +13,8 @@ void TravelingSalesman::calculate_fitness() {
 void TravelingSalesman::print() {
   std::cout << "TravelingSalesman route: ";
   my_route_->print();
-  std::cout << "  distance: " << my_route_->distance() << std::endl;
-  std::cout << "  fitness: " << fitness_ << std::endl;
+  std::cout << "  distance: " << std::fixed << my_route_->distance() << std::endl;
+  std::cout << "  fitness: " << std::fixed << std::setprecision(40) << fitness_ << std::endl;
 }
 
 RoutePtr TravelingSalesman::get_copy_of_route() {
