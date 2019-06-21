@@ -10,11 +10,20 @@ void TravelingSalesman::calculate_fitness() {
   set_fitness(1 / my_route_->distance());
 }
 
+//void TravelingSalesman::print() {
+//  std::cout << "TravelingSalesman route: ";
+//  my_route_->print();
+//  std::cout << "  distance: " << std::fixed << my_route_->distance() << std::endl;
+//  std::cout << "  fitness: " << std::fixed << std::setprecision(40) << fitness_ << std::endl;
+//}
+
 void TravelingSalesman::print() {
-  std::cout << "TravelingSalesman route: ";
-  my_route_->print();
-  std::cout << "  distance: " << std::fixed << my_route_->distance() << std::endl;
-  std::cout << "  fitness: " << std::fixed << std::setprecision(40) << fitness_ << std::endl;
+//  std::cout << "TravelingSalesman route: ";
+//  my_route_->print();
+//  std::cout << "  distance: " << std::fixed << my_route_->distance() << std::endl;
+//  std::cout << "  fitness: " << std::fixed << std::setprecision(40) << fitness_ << std::endl;
+  std::cout << " " << std::fixed << std::setprecision(40) << std::setw(50) << my_route_->distance();
+  std::cout << "    " << std::fixed << std::setprecision(40) << std::setw(50)  << fitness_ << std::endl;
 }
 
 RoutePtr TravelingSalesman::get_copy_of_route() {
