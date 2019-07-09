@@ -23,13 +23,13 @@ int main() {
   size_t total_candidate = 100;
 
 //double mut_rate, double cross_rate, int elit_count, size_t tour_size)
-  GeneticAlgo ga {0.01, 0.9, static_cast<int>(total_candidate / 10), 10}; 
+  GeneticAlgo ga {0.0002, 0.9, static_cast<int>(total_candidate / 10), 10}; 
 
   for (size_t i {}; i < total_candidate; i++) {
     ga.add_candidate(std::make_shared<TravelingSalesman>(pcities));
   }
 
-  size_t maxLoop {1000};
+  size_t maxLoop {5000};
   size_t loopCount {};
   while (loopCount < maxLoop) {
     ga.evolve();
